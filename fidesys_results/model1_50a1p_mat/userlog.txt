@@ -1,0 +1,23 @@
+reset
+import fidesyscase '/home/antonov/Base/Research/MilenSem2D/model1_50a1p.fc' mesh_geometry
+static results everysubstep 1
+output nodalforce off energy off midresults on record3d off material on without_smoothing off fullperiodic off
+calculation start path '/home/antonov/Base/Research/MilenSem2D/fidesys_results/model1_50a2p_mat.pvd'
+analysis type static elasticity dim2 planestrain
+static results everysubstep 1
+output nodalforce off energy off midresults on record3d off material on without_smoothing off fullperiodic off
+calculation start path '/home/antonov/Base/Research/MilenSem2D/fidesys_results/model1_50a1p_mat.pvd'
+
+Available RAM is set to 100% (64112 Mb)
+Available CPU is set to 100% (12 threads)
+Calculation started at 2025-09-9 17:25:35
+Using 12 CPU threads of 12 available.
+WARNING: Model is not fixed along X direction.
+WARNING: Model is not fixed along Y direction.
+Step    1. SubStep    1. Load time  1.00000000. Load step  1.00000000e+00. Done. Successfully.
+Case 1. Done. Successfully.
+Calculation has finished successfully.
+Peak memory (RAM) consumption is: 2.13379669 MB
+Used disk space is: 2.25621986 MB
+Calculation time is: 2 seconds (0 hours 0 min. 2 sec.)
+Calculation finished successfully at 2025-09-9 17:25:37

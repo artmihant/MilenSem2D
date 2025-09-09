@@ -1,0 +1,436 @@
+{
+  "project_info": {
+    "local_path": "W:\\Base\\Research\\MilenSem2D",
+    "cloud_path": "app:\\Research\\MilenSem2D",
+    "cache_version": "1.0"
+  },
+  "files": {
+    ".syncignore": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\.syncignore",
+      "modified": "2025-09-07T23:16:41.488914",
+      "md5": "de720c9c2b5c3b955a75a2fa5419c777",
+      "type": "file",
+      "size": 59
+    },
+    ".sync_cache": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\.sync_cache",
+      "modified": "2025-09-07T23:16:42.139179",
+      "md5": "23d1b3fca785203c938a61a604d95c45",
+      "type": "file",
+      "size": 16751
+    },
+    "depth_maps_all_surfaces.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\depth_maps_all_surfaces.png",
+      "modified": "2025-09-07T18:20:47.590749",
+      "md5": "85ead3c4691e00696b1e93ad9be74177",
+      "type": "file",
+      "size": 7062205
+    },
+    "grid_structure_visualization.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\grid_structure_visualization.png",
+      "modified": "2025-09-07T23:16:20.252908",
+      "md5": "003d4790e2207e388b1196cea7715ee0",
+      "type": "file",
+      "size": 1738409
+    },
+    "kriging_interpolation_results.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\kriging_interpolation_results.npz",
+      "modified": "2025-09-07T17:25:39.415348",
+      "md5": "681baa7e41c7fcb5fe9a2afdc3ba5e68",
+      "type": "file",
+      "size": 13763412
+    },
+    "make_model.ipynb": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\make_model.ipynb",
+      "modified": "2025-09-07T20:55:47.848349",
+      "md5": "e9251e0fa05dc76826c8b08b88688117",
+      "type": "file",
+      "size": 15361
+    },
+    "make_model_part1.ipynb": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\make_model_part1.ipynb",
+      "modified": "2025-09-07T23:25:42.588891",
+      "md5": "013b8026185bfc6c23ffca33bf441497",
+      "type": "file",
+      "size": 33534
+    },
+    "make_model_part2.ipynb": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\make_model_part2.ipynb",
+      "modified": "2025-09-07T23:16:20.252908",
+      "md5": "03a956fafaf14ad33bf5214f22552106",
+      "type": "file",
+      "size": 94393
+    },
+    "model_grid_coordinates.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\model_grid_coordinates.npz",
+      "modified": "2025-09-07T22:29:17.533223",
+      "md5": "96b327ab1a23a318caa9c71bd38ac6c3",
+      "type": "file",
+      "size": 2045027
+    },
+    "old\\analyze_surfaces.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\analyze_surfaces.py",
+      "modified": "2025-09-07T01:54:16.013869",
+      "md5": "43c705267418235993c44ecd6d018907",
+      "type": "file",
+      "size": 13778
+    },
+    "old\\create_dense_surfaces.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\create_dense_surfaces.py",
+      "modified": "2025-09-07T14:09:38.010486",
+      "md5": "b42581603ac75a8b6977266d1bbb34a5",
+      "type": "file",
+      "size": 10526
+    },
+    "old\\create_new_surfaces.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\create_new_surfaces.py",
+      "modified": "2025-09-07T14:09:37.731486",
+      "md5": "cd078a180e996488fc71f2f898c8bee3",
+      "type": "file",
+      "size": 9031
+    },
+    "old\\create_profile_section.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\create_profile_section.py",
+      "modified": "2025-09-07T14:09:37.070486",
+      "md5": "b8e768ccd23354543a046e6f97f423d8",
+      "type": "file",
+      "size": 12345
+    },
+    "old\\extract_well_parameters.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\extract_well_parameters.py",
+      "modified": "2025-09-07T14:46:59.697849",
+      "md5": "b1d850f0e1ae44e2ca9010650cf540e5",
+      "type": "file",
+      "size": 9338
+    },
+    "old\\interpolate_kriging.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\interpolate_kriging.py",
+      "modified": "2025-09-07T15:11:30.741469",
+      "md5": "2ae27e278ac1194677e319888d1245ff",
+      "type": "file",
+      "size": 19193
+    },
+    "old\\interpolation_results.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\interpolation_results.npz",
+      "modified": "2025-09-07T15:04:19.819047",
+      "md5": "0c7ce030b709b7ed8aa74d78faeb5a79",
+      "type": "file",
+      "size": 36442247
+    },
+    "old\\interpolation_vp_segment2_fixed.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\interpolation_vp_segment2_fixed.png",
+      "modified": "2025-09-07T15:11:08.492292",
+      "md5": "93413fd24d8a2da4a2b612ed8327a250",
+      "type": "file",
+      "size": 298796
+    },
+    "old\\linear_int.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\linear_int.png",
+      "modified": "2025-09-07T17:49:04.313529",
+      "md5": "8e3f6c9c4149e4657554a4e712a28a4d",
+      "type": "file",
+      "size": 129232
+    },
+    "old\\linear_interpolation_results.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\linear_interpolation_results.npz",
+      "modified": "2025-09-07T17:25:22.609624",
+      "md5": "beead1255958576098c88b19bcd0af14",
+      "type": "file",
+      "size": 6881594
+    },
+    "old\\make_model.ipynb": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\make_model.ipynb",
+      "modified": "2025-09-07T17:47:55.408839",
+      "md5": "bd0c69fa0da90531fab3d17e495b4108",
+      "type": "file",
+      "size": 662940
+    },
+    "old\\profile_dense_surfaces.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_dense_surfaces.npz",
+      "modified": "2025-09-07T03:16:03.409977",
+      "md5": "7ff997d576801624aae00e1b0a5e497f",
+      "type": "file",
+      "size": 4592702
+    },
+    "old\\profile_dense_surfaces_overview.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_dense_surfaces_overview.png",
+      "modified": "2025-09-07T03:16:03.399983",
+      "md5": "ac3c3e3600d42527a4b5931e5a4417c5",
+      "type": "file",
+      "size": 1757720
+    },
+    "old\\profile_new_surfaces.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_new_surfaces.npz",
+      "modified": "2025-09-07T03:02:44.637223",
+      "md5": "2f0ca47d4285f6cee0db2210c5cc1af9",
+      "type": "file",
+      "size": 340222
+    },
+    "old\\profile_new_surfaces.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_new_surfaces.png",
+      "modified": "2025-09-07T03:02:44.312618",
+      "md5": "cc87aaf8c664199c0ff84aecfd2cb872",
+      "type": "file",
+      "size": 525833
+    },
+    "old\\profile_sections_final.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_sections_final.npz",
+      "modified": "2025-09-07T02:39:36.585443",
+      "md5": "a37f239cea22b20f42fc8f0c2087dff4",
+      "type": "file",
+      "size": 226772
+    },
+    "old\\profile_sections_final.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_sections_final.png",
+      "modified": "2025-09-07T02:39:36.577449",
+      "md5": "ed0516bea2845e0be2423e7a7ad1c117",
+      "type": "file",
+      "size": 400216
+    },
+    "old\\profile_section_simple.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\profile_section_simple.py",
+      "modified": "2025-09-07T14:09:37.535487",
+      "md5": "3722c35963db6cdfee0196db767cff04",
+      "type": "file",
+      "size": 8365
+    },
+    "old\\requirements.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\requirements.txt",
+      "modified": "2025-09-07T14:09:36.792486",
+      "md5": "b333dcc16fb2cf7b7c2b1a5afac741c4",
+      "type": "file",
+      "size": 51
+    },
+    "old\\research.py": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\research.py",
+      "modified": "2025-09-07T17:25:24.155211",
+      "md5": "f225ee1b64f2533a9b8d32d43f4b0e4d",
+      "type": "file",
+      "size": 15706
+    },
+    "old\\surfaces_data.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\surfaces_data.npz",
+      "modified": "2025-09-07T01:54:03.138044",
+      "md5": "beb5299741056740f771827e731f63aa",
+      "type": "file",
+      "size": 38922940
+    },
+    "old\\well_parameters.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\well_parameters.npz",
+      "modified": "2025-09-07T14:46:12.634112",
+      "md5": "c41472b258297183438b0763e131c71a",
+      "type": "file",
+      "size": 3034
+    },
+    "old\\well_parameters_full.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old\\well_parameters_full.npz",
+      "modified": "2025-09-07T15:03:24.941910",
+      "md5": "e5fbb247e1ee328227df3bc4ef60456a",
+      "type": "file",
+      "size": 17706
+    },
+    "Process.md": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\Process.md",
+      "modified": "2025-09-07T17:52:57.082695",
+      "md5": "06807cc48eb62f78a591157ca937859a",
+      "type": "file",
+      "size": 2572
+    },
+    "profile_sections_all_surfaces.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\profile_sections_all_surfaces.png",
+      "modified": "2025-09-07T22:27:02.693967",
+      "md5": "f09610d3da9b1f7e699e8e415dbaf810",
+      "type": "file",
+      "size": 805817
+    },
+    "profile_sections_combined.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\profile_sections_combined.png",
+      "modified": "2025-09-07T22:27:03.176280",
+      "md5": "268d258ebbcbf47e373bac8457bb0e96",
+      "type": "file",
+      "size": 444513
+    },
+    "profile_sections_depths.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\profile_sections_depths.npz",
+      "modified": "2025-09-07T22:27:02.877263",
+      "md5": "9c95476b8cc51b841f513cb6a4134980",
+      "type": "file",
+      "size": 102635
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__0_surf_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__0_surf_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "ff0dd018c2129fcc24b49de9cd6077c1",
+      "type": "file",
+      "size": 26571537
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__A_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__A_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "ebf26666fcb35c6c6f870503c9be69d1",
+      "type": "file",
+      "size": 28068525
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__B_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__B_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "a2ae79c43fbad574e9a9b9e426004cc6",
+      "type": "file",
+      "size": 33682230
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__G1_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__G1_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "0e40f725c6c6b1035faa1f640eb05f53",
+      "type": "file",
+      "size": 26945784
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__G2_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__G2_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "db1aa1e7e988f769d5c7bc84890ce60f",
+      "type": "file",
+      "size": 28442772
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__G_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__G_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "412ad2150ff0e4754f3485608d0a44d1",
+      "type": "file",
+      "size": 31062501
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__M1_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__M1_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "f4664a02ccd91b2f7968b1af1a730c14",
+      "type": "file",
+      "size": 28068525
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__M_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__M_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "b7d75b772aa2acb665f1846c9e9d215a",
+      "type": "file",
+      "size": 29565513
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__U2_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__U2_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "94332dc9f1afc8433bdaf04ff02faca6",
+      "type": "file",
+      "size": 25823043
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__Under_0_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__Under_0_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "5e18b1ccafde2250a6689fa122335deb",
+      "type": "file",
+      "size": 28442772
+    },
+    "src\\Depth_surfaces_for_Fidesys\\hrz__Upper_time_depth_itog.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys\\hrz__Upper_time_depth_itog.txt",
+      "modified": "1980-01-01T00:00:00",
+      "md5": "69e8909298596784489e7b9ff5c32755",
+      "type": "file",
+      "size": 28068525
+    },
+    "src\\PROMPT.md": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\PROMPT.md",
+      "modified": "2025-09-07T18:19:52.935935",
+      "md5": "bea65f2aa53856c631194cfa47393e3a",
+      "type": "file",
+      "size": 9406
+    },
+    "src\\Vp,Vs,phob,litho_column.xlsx": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Vp,Vs,phob,litho_column.xlsx",
+      "modified": "2025-09-07T00:18:01.417047",
+      "md5": "e3f5a02d6720125db9584665a953aa73",
+      "type": "file",
+      "size": 13347
+    },
+    "src\\Vp,Vs,phob,litho_column.xltx": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Vp,Vs,phob,litho_column.xltx",
+      "modified": "2025-09-07T02:49:41.686943",
+      "md5": "ba09456f8017a7474a3a09a5541be1cb",
+      "type": "file",
+      "size": 10116
+    },
+    "src\\well1_Backus_Elast_Vp_Vs_rhob.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\well1_Backus_Elast_Vp_Vs_rhob.txt",
+      "modified": "2025-09-07T16:04:32.968650",
+      "md5": "415ada92070574705478102f5d0a72ac",
+      "type": "file",
+      "size": 18124
+    },
+    "src\\well_2_Backus_Elast_param_Vp_Vs_rhob.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\well_2_Backus_Elast_param_Vp_Vs_rhob.txt",
+      "modified": "2025-09-07T01:22:09.135539",
+      "md5": "a12072b1687641157069d6eff850117d",
+      "type": "file",
+      "size": 18765
+    },
+    "src\\Координаты скважин.txt": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Координаты скважин.txt",
+      "modified": "2025-09-07T18:09:28.278627",
+      "md5": "8a6d3545f05854a2c45b4b0c27feffe8",
+      "type": "file",
+      "size": 76
+    },
+    "src\\Обновленное описание схемы сейсмической расстановки.docx": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Обновленное описание схемы сейсмической расстановки.docx",
+      "modified": "2025-09-07T00:17:43.643094",
+      "md5": "d3b5243edadeed71524db7d01acd5028",
+      "type": "file",
+      "size": 726693
+    },
+    "VERSION": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\VERSION",
+      "modified": "2025-09-07T23:16:20.250908",
+      "md5": "fbacc30a1f288ebf360ad2de66710082",
+      "type": "file",
+      "size": 5
+    },
+    "well1_profile_layers.png": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\well1_profile_layers.png",
+      "modified": "2025-09-07T21:11:01.797140",
+      "md5": "7c2eced17486bbab38a4fef1646e06a4",
+      "type": "file",
+      "size": 254342
+    },
+    "well1_surface_depths.npz": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\well1_surface_depths.npz",
+      "modified": "2025-09-07T21:11:01.828207",
+      "md5": "20203564532664d0e6131eb2620a430e",
+      "type": "file",
+      "size": 1565
+    }
+  },
+  "dirs": {
+    "old": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\old",
+      "modified": "2025-09-07T18:05:35.646622",
+      "md5": "",
+      "type": "dir",
+      "size": 0
+    },
+    "src": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src",
+      "modified": "2025-09-07T17:58:01.522000",
+      "md5": "",
+      "type": "dir",
+      "size": 0
+    },
+    "src\\Depth_surfaces_for_Fidesys": {
+      "path": "W:\\Base\\Research\\MilenSem2D\\src\\Depth_surfaces_for_Fidesys",
+      "modified": "2025-09-07T01:05:01.539370",
+      "md5": "",
+      "type": "dir",
+      "size": 0
+    }
+  },
+  "statistics": {
+    "total_files": 57,
+    "total_directories": 3,
+    "total_size": 433219141
+  }
+}

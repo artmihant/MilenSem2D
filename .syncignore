@@ -1,0 +1,7 @@
+.git
+.mypy_cache
+*/.mypy_cache
+.env
+.idea
+__pycache__
+node_modules

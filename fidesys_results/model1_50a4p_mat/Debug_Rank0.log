@@ -1,0 +1,173 @@
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] FidesysCalc.Version: 8.0.2111.7153
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Parser. FC: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Parser. Ins: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Parser. Ins: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Parser. Solver: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Parser. Solver: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Linear points search: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Linear points search: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Parser. FC: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing ancestor: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing ancestor: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing elasticity: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing elasticity: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. BeginSteps elasticity: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. BeginSteps ancestor: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing DofsMap: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Nodes count: 20296
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Dofs count: 40592
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing DofsMap: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Initialized AgreedSmoothing
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. BeginSteps ancestor: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Initializing resultants: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing SparseAPI from FEM: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing SparseAPI from FEM: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing resultant matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing resultant matrix: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant matrix: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Initializing resultants: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving resultants: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant vector: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant vector: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving resultant matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving resultant matrix: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant fields: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant fields: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Update resultant results: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Update resultant results: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving resultants: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Write results to file: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Write results to file: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. BeginSteps elasticity: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. NextStep elasticity: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing matrix for step: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling contact continuity: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling contact continuity: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing SparseAPI from FEM: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Initializing SparseAPI from FEM: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing matrix for step: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling internal fields: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling internal fields: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Applying constraints: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Applying constraints: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving constraints: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: Incomplete Problem solution starting...
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Input row count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Input non-zero count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel.luq_handler: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel.luq_handler : Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Output row count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Output non-zero count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: Incomplete Problem solution completed successfully
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: Incomplete Problem solution starting...
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Input row count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Input non-zero count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: Incomplete problem residual: 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Output row count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix Output non-zero count = 0
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: Incomplete Problem solution completed successfully
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving constraints: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Warning] Model is not fixed along X direction.
+2025-09-09 17:56:49 [0 of 0 Byte][Warning] Model is not fixed along Y direction.
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Initializing matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Initializing matrix: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling matrix and internal forces: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling matrix and internal forces: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling external forces: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling external forces: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Applying constraints to matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Applying constraints to matrix: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing rhs to solve: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing rhs to solve: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing matrix to solve: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving matrix. Direct elimination matrix transformation: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. K_reduced_matrix.CheckSymValues: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix is symmetric
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. K_reduced_matrix.CheckSymValues: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving matrix. Direct elimination matrix transformation: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Check zero diagonal in matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Check zero diagonal in matrix: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Preparing matrix to solve: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: LAES Problem solution starting...
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix row count = 40592
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix non-zero count = 722944
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix is symmetric
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix is not positive
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Right hand sides count = 1
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ]    Starting Direct Solver
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    PARDISO
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix is symmetric
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Converted to UPPER
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 0 starting
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 0 completed
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 1 starting
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 1 completed
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 2 starting
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 2 completed
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 3 starting
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Phase 3 completed
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Converted to FULL
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Solver Completed successfully
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseAPI: LAES Problem solution completed successfully
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Reset solver: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Reset solver: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving matrix: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling internal fields: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Filling internal fields: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Info   ] Kernel. Solving resultants: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant vector: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Filling resultant vector: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving resultant matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving matrix. Direct elimination matrix transformation: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseMatrixSEQ: Insert buffer to matrix: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] SparseMatrixSEQ: Insert buffer to matrix: Done
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. K_reduced_matrix.CheckSymValues: Start
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ]    Matrix is symmetric
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. K_reduced_matrix.CheckSymValues: Done
+
+2025-09-09 17:56:49 [0 of 0 Byte][Debug  ] Kernel. Solving matrix. Direct elimination matrix transformation: Done
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. Solving resultant matrix: Done
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. Filling resultant fields: Start
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. Filling resultant fields: Done
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. Update resultant results: Start
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. Update resultant results: Done
+2025-09-09 17:56:50 [0 of 0 Byte][Info   ] Kernel. Solving resultants: Done
+
+2025-09-09 17:56:50 [0 of 0 Byte][Info   ] Kernel. Write results to file: Start
+2025-09-09 17:56:50 [0 of 0 Byte][Info   ] Kernel. Write results to file: Done
+
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. NextStep elasticity: Done
+
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. EndSteps elasticity: Start
+2025-09-09 17:56:50 [0 of 0 Byte][Debug  ] Kernel. EndSteps elasticity: Done
+

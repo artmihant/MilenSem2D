@@ -1,0 +1,100 @@
+{
+  "library": "fc_model",
+  "version": "1.1.4",
+  "python_min": "3.8",
+  "import_rule": "Import only from fc_model (public re-exports).",
+  "serialization": {
+    "load": "FCModel(filepath)",
+    "dump": "FCModel.dump() -> Dict[str, Any]",
+    "save": "FCModel.save(path: str) -> None",
+    "binary_encoding": "Base64 strings in JSON"
+  },
+  "root": {
+    "class": "FCModel",
+    "init": {
+      "signature": "FCModel(filepath: Optional[str] = None) -> None",
+      "effects": [
+        "Decodes input JSON structure into typed objects",
+        "Initializes empty collections when filepath is None"
+      ]
+    },
+    "fields": {
+      "header": "FCHeader",
+      "coordinate_systems": "Dict[int, FCCoordinateSystem]",
+      "mesh": "FCMesh",
+      "blocks": "Dict[int, FCBlock]",
+      "materials": "Dict[int, FCMaterial]",
+      "property_tables": "Dict[int, FCPropertyTable]",
+      "loads": "List[FCLoad]",
+      "restraints": "List[FCRestraint]",
+      "initial_sets": "List[FCInitialSet]",
+      "contact_constraints": "List[FCConstraint]",
+      "coupling_constraints": "List[FCConstraint]",
+      "periodic_constraints": "List[FCConstraint]",
+      "receivers": "List[FCReceiver]",
+      "nodesets": "Dict[int, FCSet]",
+      "sidesets": "Dict[int, FCSet]",
+      "settings": "Dict[str, Any]"
+    },
+    "methods": [
+      {"name": "dump", "returns": "Dict[str, Any]"},
+      {"name": "save", "args": ["filepath: str"], "returns": "None"}
+    ]
+  },
+  "entities": {
+    "FCMesh": {
+      "role": "Holds nodes/elements arrays and related metadata",
+      "notes": [
+        "elem_types are uint8 in JSON",
+        "flattened elems array encodes per-element node lists"
+      ]
+    },
+    "FCCoordinateSystem": {
+      "fields": ["id", "type", "name", "origin", "dir1", "dir2"],
+      "encoding": "Vectors encoded/decoded as Base64"
+    },
+    "FCBlock": {"role": "Links elements to materials and properties"},
+    "FCMaterial": {
+      "role": "Material with grouped properties by domains",
+      "fields": ["id", "name", "properties"]
+    },
+    "FCMaterialProperty": {
+      "fields": ["type", "name", "data: FCData"]
+    },
+    "FCData": {
+      "role": "Constant/table/formula data with dependency metadata",
+      "fields": ["data", "dep_type", "dep_data"]
+    },
+    "FCLoad": {"role": "Loads with apply_to and component dependencies"},
+    "FCRestraint": {"role": "Boundary conditions (restraints)"},
+    "FCInitialSet": {"role": "Initial conditions"},
+    "FCSet": {"role": "Node and side sets"},
+    "FCReceiver": {"role": "Result receivers"},
+    "FCConstraint": {"role": "Contact/coupling/periodic constraints"}
+  },
+  "constants": {
+    "materials": [
+      "FC_MATERIAL_PROPERTY_NAMES_KEYS", "FC_MATERIAL_PROPERTY_NAMES_CODES",
+      "FC_MATERIAL_PROPERTY_TYPES_KEYS", "FC_MATERIAL_PROPERTY_TYPES_CODES"
+    ],
+    "loads_bc_ic": [
+      "FC_LOADS_TYPES_KEYS", "FC_LOADS_TYPES_CODES",
+      "FC_RESTRAINT_FLAGS_KEYS", "FC_RESTRAINT_FLAGS_CODES",
+      "FC_INITIAL_SET_TYPES_KEYS", "FC_INITIAL_SET_TYPES_CODES"
+    ],
+    "mesh": ["FC_ELEMENT_TYPES_KEYID", "FC_ELEMENT_TYPES_KEYNAME"],
+    "dependencies": ["FC_DEPENDENCY_TYPES_KEYS", "FC_DEPENDENCY_TYPES_CODES"]
+  },
+  "invariants": [
+    "Import only from fc_model root",
+    "Use constants/lookups; do not hardcode numeric codes",
+    "settings is a dict, defaults to {}",
+    "Binary arrays are Base64 strings in JSON"
+  ],
+  "examples": {
+    "load_save": "from fc_model import FCModel; m = FCModel('in.fc'); m.save('out.fc')",
+    "add_material_property": "from fc_model import FCMaterialProperty, FCData; mat = m.materials[next(iter(m.materials))]; mat.properties.setdefault('common', [[]])[0].append(FCMaterialProperty(type='USUAL', name='DENSITY', data=FCData(data='', dep_type=0, dep_data='')))"
+  }
+}
+
+
