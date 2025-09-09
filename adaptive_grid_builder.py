@@ -8,6 +8,7 @@
 
 import numpy as np
 import sys
+import matplotlib.pyplot as plt
 from pathlib import Path
 from typing import Tuple, List, Dict, Any
 
@@ -460,12 +461,181 @@ def create_adaptive_models(thresholds: List[float] = [5.0, 10.0, 15.0, 20.0]):
 
     return results
 
+# Парсинг данных скважин
+def parse_well_data(filepath):
+    """
+    Парсит файл с данными скважины и возвращает исправленные данные
+    Используем ручной парсинг, так как pandas пропускает одну строку.
+    """
+    # Ручной парсинг файла для получения всех строк
+    with open(filepath, 'r') as f:
+        lines = f.readlines()[1:]  # пропускаем заголовок
+    
+    data = []
+    for line in lines:
+        parts = line.split()
+        if len(parts) >= 4:  # проверяем, что есть все 4 значения
+            data.append([float(parts[1]), float(parts[2]), float(parts[3])])  # Vp, rhob, Vs
+    
+    data_array = np.array(data)
+    num_points = len(data_array)
+    
+    # Создаем правильные глубины - шаг 10 м начиная с 10 м для всех точек
+    corrected_depths = np.arange(10, 10 + num_points * 10, 10)
+    
+    # Извлекаем параметры
+    vp = data_array[:, 0]    # Vp - скорость продольной волны
+    rhob = data_array[:, 1]  # Плотность
+    vs = data_array[:, 2]    # Vs - скорость поперечной волны
+    
+    return corrected_depths, vp, rhob, vs
+
+
+def extract_density_profile_at_x(density_array: np.ndarray, x_coords: np.ndarray, z_coords: np.ndarray,
+                                target_x: float = 4250.0):
+    """
+    Извлекает профиль плотности вдоль вертикальной линии с заданной X-координатой.
+
+    Args:
+        density_array: массив плотности (nx, nz)
+        x_coords: координаты X (nx+1,)
+        z_coords: координаты Z (nx+1, nz+1)
+        target_x: целевая X-координата
+
+    Returns:
+        tuple: (z_values, density_values) - Z-координаты и соответствующие значения плотности
+    """
+    # Находим индекс ближайшей X-координаты
+    x_center = (x_coords[:-1] + x_coords[1:]) / 2  # центры элементов по X
+    x_idx = np.argmin(np.abs(x_center - target_x))
+
+    # Извлекаем профиль плотности вдоль выбранной вертикальной линии
+    density_profile = density_array[x_idx, :]
+
+    # Используем Z-координаты из центра сетки для профиля
+    z_center_idx = x_coords.shape[0] // 2
+    z_values = z_coords[z_center_idx, :-1]  # Z-координаты элементов (без последней границы)
+
+    return z_values, density_profile
+
+
+def plot_density_profiles_comparison(thresholds: List[float] = [1.0, 2.0, 3.0, 4.0, 5.0]):
+    """
+    Строит график сравнения профилей плотности для всех моделей вдоль X=4250.
+
+    Args:
+        thresholds: список порогов схожести в процентах для адаптивных моделей
+    """
+    print("\n" + "="*80)
+    print("ПОСТРОЕНИЕ ГРАФИКА ПРОФИЛЕЙ ПЛОТНОСТИ")
+    print("="*80)
+
+    # Загружаем оригинальные данные
+    kriging_params, x_coords, z_coords = load_original_data()
+
+    # Создаем базовую модель 50×10
+    base_kriging, base_x, base_z = create_coarse_grid(50.0, 10.0, kriging_params, x_coords, z_coords)
+
+    # Создаем адаптивные модели с заданными порогами
+    adaptive_models = []
+
+    for threshold in thresholds:
+        print(f"Создание адаптивной модели с порогом {threshold}%...")
+
+        # Агрегируем по горизонтали до 50м
+        coarse_kriging, coarse_x, coarse_z = create_coarse_grid(
+            50.0, 10.0, kriging_params, x_coords, z_coords
+        )
+
+        # Объединяем похожие слои
+        merged_kriging, merged_z, merge_info = merge_similar_layers(
+            coarse_kriging, coarse_z, threshold, max_merge_layers=5
+        )
+
+        adaptive_models.append({
+            'threshold': threshold,
+            'density': merged_kriging[:, :, 1],  # индекс 1 - плотность
+            'x_coords': coarse_x,
+            'z_coords': merged_z,
+            'merge_info': merge_info
+        })
+
+    # Настраиваем график
+    plt.figure(figsize=(15, 10))
+
+    # Создаем rainbow градиент для адаптивных моделей
+    n_thresholds = len(thresholds)
+    rainbow_colors = [plt.cm.rainbow(i / n_thresholds) for i in range(n_thresholds)]
+
+    # Базовая модель всегда красная
+    base_color = 'black'
+
+    labels = ['Базовая 10'] + [f'Адаптивная {t:.0f}%' for t in thresholds]
+
+    # Строим профиль для базовой модели
+    z_base, density_base = extract_density_profile_at_x(
+        base_kriging[:, :, 1], base_x, base_z, target_x=4250.0
+    )
+    plt.plot(density_base, z_base, color=base_color, linewidth=3, label=labels[0], zorder=1)
+
+
+    # Строим профили для адаптивных моделей
+    for i, model in enumerate(adaptive_models):
+        z_profile, density_profile = extract_density_profile_at_x(
+            model['density'], model['x_coords'], model['z_coords'], target_x=4250.0
+        )
+        plt.plot(density_profile, z_profile, color=rainbow_colors[i], linewidth=2,
+                label=labels[i+1], alpha=0.8, zorder=2)
+
+
+
+    # Настраиваем внешний вид графика
+    plt.xlabel('Плотность (г/см³)', fontsize=14)
+    plt.ylabel('Глубина (м)', fontsize=14)
+    plt.title('Профили плотности вдоль X=4250 м (первая скважина)', fontsize=16, fontweight='bold')
+    plt.grid(True, alpha=0.3)
+    plt.legend(fontsize=12)
+
+    # Инвертируем ось Y (глубина увеличивается вниз)
+    plt.gca().invert_yaxis()
+
+    # Добавляем дополнительную информацию
+    info_text = f"Сравнение профилей плотности:\n"
+    info_text += f"• Базовая модель: {base_kriging.shape[0]}×{base_kriging.shape[1]} элементов\n"
+
+    for model in adaptive_models:
+        merged_layers = len(model['merge_info'])
+        total_original = sum(info['element_count'] for info in model['merge_info'])
+        compression = total_original / merged_layers if merged_layers > 0 else 1.0
+        info_text += f"• Порог {model['threshold']:.0f}%: {model['density'].shape[0]}×{model['density'].shape[1]} элементов (сжатие {compression:.1f}x)\n"
+
+    plt.figtext(0.02, 0.02, info_text, fontsize=10, verticalalignment='bottom',
+                bbox=dict(boxstyle="round,pad=0.3", facecolor='lightgray', alpha=0.8))
+
+    # Сохраняем график
+    plt.tight_layout()
+    plt.savefig('density_profiles_comparison.png', dpi=300, bbox_inches='tight')
+    print("✓ График сохранен в файл: density_profiles_comparison.png")
+
+    # Показываем график
+    plt.show()
+
 
 def main():
     """Основная функция."""
-    # Создание адаптивных моделей с разными порогами
-    results = create_adaptive_models([1.0, 5.0])
+    # Задаем пороги схожести
+    thresholds = [1.0, 4.0]
 
+    # Создание адаптивных моделей с заданными порогами
+    results = create_adaptive_models(thresholds)
+
+    # Построение графика сравнения профилей плотности
+    try:
+        plot_density_profiles_comparison(thresholds)
+    except Exception as e:
+        print(f"✗ ОШИБКА при построении графика: {e}")
+        import traceback
+        traceback.print_exc()
 
     return results
 
