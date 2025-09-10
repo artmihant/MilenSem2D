@@ -100,9 +100,15 @@ def create_coarse_grid(dx_target, dz_target, kriging_params, x_coords, z_coords)
     return coarse_kriging, coarse_x, coarse_z
 
 
-def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path):
+def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path,
+    layers=[
+        17, 30, 48, 90, 112,
+        121, 137, 165, 220, 222,
+        224, 226, 228, 230, 232,
+        240, 242],
+):
     """
-    Построение fc модели из массивов данных.
+    Построение fc модели из массивов данных с разделением на слои.
 
     Args:
         x_coords: координаты X узлов
@@ -111,6 +117,7 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
         density: плотности (nx-1, nz-1)
         vs: скорости Vs (nx-1, nz-1)
         output_path: путь для сохранения fc файла
+        layers: список границ слоев (нижние границы элементов)
     """
     print(f"Построение FC модели: {vp.shape[0]}×{vp.shape[1]} элементов")
 
@@ -149,6 +156,30 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
     model.mesh.nodes_ids = node_ids
     model.mesh.nodes_xyz = nodes_xyz
 
+    # Подготовка границ слоев
+    layer_boundaries = [0] + layers + [nz - 1]  # Добавляем начало и конец
+    num_layers = len(layer_boundaries) - 1
+
+    print(f"Создание {num_layers} слоев: {layer_boundaries}")
+
+    # Создаем массивы для хранения информации по элементам
+    element_layer_ids = np.zeros((nx - 1, nz - 1), dtype=int)
+    layer_elements = [[] for _ in range(num_layers)]
+
+    # Определяем принадлежность элементов к слоям
+    for i in range(nx - 1):
+        for j in range(nz - 1):
+            # Находим слой для элемента (определяется по нижней грани)
+            for layer_id in range(num_layers):
+                if layer_boundaries[layer_id] <= j < layer_boundaries[layer_id + 1]:
+                    element_layer_ids[i, j] = layer_id
+                    break
+            else:
+                # Если не нашли слой, помещаем в последний
+                element_layer_ids[i, j] = num_layers - 1
+
+            layer_elements[element_layer_ids[i, j]].append((i, j))
+
     # Добавление элементов
     element_id = 1
     elements_created = 0
@@ -160,11 +191,14 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
             n3 = (i + 1) * nz + (j + 1) + 1
             n4 = i * nz + (j + 1) + 1
 
+            # Определяем блок на основе слоя
+            block_id = element_layer_ids[i, j] + 1
+
             element = FCElement({
                 'id': element_id,
                 'type': 'QUAD4',
                 'nodes': [n1, n2, n3, n4],
-                'block': 1,
+                'block': block_id,
                 'parent_id': 0,
                 'order': 1
             })
@@ -173,7 +207,7 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
             element_id += 1
             elements_created += 1
 
-    # Создание материала
+    # Создание одного общего материала для всех слоев
     num_elements = (nx - 1) * (nz - 1)
 
     # Векторные операции для расчета свойств
@@ -194,7 +228,7 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
 
     elements_ids = np.arange(1, num_elements + 1, dtype=np.float64)
 
-    # Создаем материал с табличными свойствами
+    # Создаем один общий материал для всех элементов
     material_dict = {
         'id': 1,
         'name': f'model_{nx-1}x{nz-1}_material',
@@ -222,15 +256,31 @@ def build_fc_model_from_arrays(x_coords, z_coords, vp, density, vs, output_path)
 
     model.materials[1] = material
 
-    # Создание блока
-    block = FCBlock({
-        'id': 1,
-        'cs_id': 0,
-        'material_id': 1,
-        'property_id': 0
-    })
+    # Создаем блоки для каждого слоя (все ссылаются на один материал)
+    for layer_id in range(num_layers):
+        block_id = layer_id + 1
 
-    model.blocks[1] = block
+        # Получаем индексы элементов в этом слое
+        layer_element_indices = []
+        for i, j in layer_elements[layer_id]:
+            element_idx = i * (nz - 1) + j
+            layer_element_indices.append(element_idx)
+
+        if not layer_element_indices:
+            print(f"Предупреждение: слой {layer_id} пустой")
+            continue
+
+        # Создание блока для слоя (все блоки ссылаются на материал 1)
+        block = FCBlock({
+            'id': block_id,
+            'cs_id': 0,
+            'material_id': 1,  # Все блоки используют один материал
+            'property_id': 0
+        })
+
+        model.blocks[block_id] = block
+
+        print(f"Слой {layer_id}: блок {block_id}, материал 1, элементов: {len(layer_element_indices)}")
 
     # Сохранение модели
     print(f"Сохранение модели в {output_path}...")
@@ -253,9 +303,6 @@ def create_multiple_models():
         (10, 10),  # оригинальная
         (25, 10),
         (50, 10),
-        (25, 20),
-        (50, 20),
-        (50, 40)
     ]
 
     results = []
@@ -315,9 +362,140 @@ def create_multiple_models():
     return results
 
 
+def assign_materials_to_blocks(fc_file_path, csv_file_path):
+    """
+    Создает индивидуальные материалы для каждого блока в FC файле.
+
+    Args:
+        fc_file_path: путь к FC файлу модели
+        csv_file_path: путь к CSV файлу с данными материалов
+    """
+    import json
+
+    # Загрузка данных из CSV файла
+    print("Загрузка данных из CSV файла...")
+    material_data = {}
+    with open(csv_file_path, 'r') as f:
+        lines = f.readlines()
+
+    # Пропускаем заголовок и читаем данные
+    for i, line in enumerate(lines[1:], 1):
+        parts = line.strip().split('\t')
+        if len(parts) >= 4:
+            depth = float(parts[0].replace(',', '.'))
+            vp = float(parts[1].replace(',', '.'))
+            density = float(parts[2].replace(',', '.')) * 1000  # домножаем на 1000
+            vs = float(parts[3].replace(',', '.'))
+
+            material_data[i] = {
+                'depth': depth,
+                'vp': vp,
+                'density': density,
+                'vs': vs
+            }
+
+    print(f"Загружено {len(material_data)} записей материала")
+
+    # Загрузка FC файла
+    print(f"Загрузка FC файла: {fc_file_path}")
+    with open(fc_file_path, 'r') as f:
+        fc_data = json.load(f)
+
+    # Получаем количество блоков
+    blocks = fc_data.get('blocks', [])
+    num_blocks = len(blocks)
+    print(f"Найдено {num_blocks} блоков")
+
+    # Создаем материалы для каждого блока
+    materials = []
+    for block_id in range(1, num_blocks + 1):
+        if block_id in material_data:
+            data = material_data[block_id]
+
+            # Расчет модуля Юнга и коэффициента Пуассона
+            vp = data['vp']
+            vs = data['vs']
+            density = data['density']
+
+            vp2 = vp ** 2
+            vs2 = vs ** 2
+
+            young_modulus = density * vs2 * (3 * vp2 - 4 * vs2) / (vp2 - vs2)
+            poisson_ratio = (vp2 - 2 * vs2) / (2 * (vp2 - vs2))
+
+            material = {
+                "id": block_id,
+                "name": f"material_block_{block_id}",
+                "properties": {
+                    "elasticity": [
+                        {
+                            "type": "HOOK",
+                            "subtype": "YOUNG_MODULE",
+                            "data": [young_modulus]
+                        },
+                        {
+                            "type": "HOOK",
+                            "subtype": "POISSON_RATIO",
+                            "data": [poisson_ratio]
+                        }
+                    ],
+                    "common": [
+                        {
+                            "type": "USUAL",
+                            "subtype": "DENSITY",
+                            "data": [density]
+                        }
+                    ]
+                }
+            }
+            materials.append(material)
+
+            # Обновляем material_id для блока
+            for block in blocks:
+                if block['id'] == block_id:
+                    block['material_id'] = block_id
+                    break
+
+            print(f"Блок {block_id}: материал создан (Vp={vp:.1f}, Vs={vs:.1f}, ρ={density:.1f})")
+        else:
+            print(f"Предупреждение: данные для блока {block_id} не найдены")
+
+    # Обновляем секцию материалов
+    fc_data['materials'] = materials
+
+    # Сохраняем обновленный файл
+    output_path = fc_file_path.replace('.fc', '_with_materials.fc')
+    with open(output_path, 'w') as f:
+        json.dump(fc_data, f, indent=2)
+
+    print(f"Файл сохранен: {output_path}")
+    print(f"Создано {len(materials)} материалов для {num_blocks} блоков")
+
+    return output_path
+
+
 def main():
     """Основная функция."""
-    return create_multiple_models()
+    # Сначала создаем модели
+    results = create_multiple_models()
+
+    # Затем присваиваем материалы для model2_unstruct.fc
+    fc_file = "model2_unstruct.fc"
+    csv_file = "data/static_material.csv"
+
+    if Path(fc_file).exists() and Path(csv_file).exists():
+        print("\n" + "="*60)
+        print("СОЗДАНИЕ МАТЕРИАЛОВ ДЛЯ БЛОКОВ")
+        print("="*60)
+        assign_materials_to_blocks(fc_file, csv_file)
+    else:
+        print("Предупреждение: файлы не найдены")
+        if not Path(fc_file).exists():
+            print(f"  Не найден: {fc_file}")
+        if not Path(csv_file).exists():
+            print(f"  Не найден: {csv_file}")
+
+    return results
 
 
 if __name__ == "__main__":
