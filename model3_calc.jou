@@ -1,0 +1,5 @@
+analysis type dynamic elasticity dim2 planestrain preload off
+dynamic method full_solution scheme explicit maxsteps 30000 maxtime 3
+dynamic results everytime 0.1
+create absorption on curve 4 7 10 13 16 19 22 25 28 31 34 37 40 43 46 49 52
+output nodalforce off energy off record3d off material off without_smoothing off fullperiodic off

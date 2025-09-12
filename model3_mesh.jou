@@ -1,0 +1,73 @@
+delete mesh surface all propagate
+delete mesh curve all propagate
+curve 1 scheme equal interval 235
+curve 3 scheme equal interval 235
+curve 6 scheme equal interval 235
+curve 9 scheme equal interval 235
+curve 12 scheme equal interval 175
+curve 15 scheme equal interval 175
+curve 18 scheme equal interval 175
+curve 21 scheme equal interval 175
+curve 24 scheme equal interval 175
+curve 27 scheme equal interval 135
+curve 30 scheme equal interval 135
+curve 33 scheme equal interval 135
+curve 36 scheme equal interval 135
+curve 39 scheme equal interval 135
+curve 42 scheme equal interval 135
+curve 45 scheme equal interval 135
+curve 48 scheme equal interval 135
+curve 51 scheme equal interval 135
+curve 4 scheme equal interval 4
+curve 7 scheme equal interval 3
+curve 10 scheme equal interval 4
+curve 13 scheme equal interval 6
+curve 16 scheme equal interval 4
+curve 19 scheme equal interval 2
+curve 22 scheme equal interval 3
+curve 25 scheme equal interval 5
+curve 28 scheme equal interval 8
+curve 31 scheme equal interval 1
+curve 34 scheme equal interval 1
+curve 37 scheme equal interval 1
+curve 40 scheme equal interval 1
+curve 43 scheme equal interval 1
+curve 46 scheme equal interval 1
+curve 49 scheme equal interval 1
+curve 52 scheme equal interval 1
+curve 2 scheme equal interval 4
+curve 5 scheme equal interval 3
+curve 8 scheme equal interval 4
+curve 11 scheme equal interval 6
+curve 14 scheme equal interval 4
+curve 17 scheme equal interval 2
+curve 20 scheme equal interval 3
+curve 23 scheme equal interval 5
+curve 26 scheme equal interval 8
+curve 29 scheme equal interval 1
+curve 32 scheme equal interval 1
+curve 35 scheme equal interval 1
+curve 38 scheme equal interval 1
+curve 41 scheme equal interval 1
+curve 44 scheme equal interval 1
+curve 47 scheme equal interval 1
+curve 50 scheme equal interval 1
+mesh curve all
+surface 1 scheme map
+surface 2 scheme map
+surface 3 scheme map
+surface 4 scheme pave
+surface 5 scheme map
+surface 6 scheme map
+surface 7 scheme map
+surface 8 scheme map
+surface 9 scheme pave
+surface 10 scheme map
+surface 11 scheme map
+surface 12 scheme map
+surface 13 scheme map
+surface 14 scheme map
+surface 15 scheme map
+surface 16 scheme map
+surface 17 scheme map
+mesh surface all
